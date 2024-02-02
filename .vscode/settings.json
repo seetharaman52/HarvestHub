@@ -1,0 +1,12 @@
+// Workspace settings
+{
+    // The following will hide the js and map files in the editor
+    "files.exclude": {
+        "**/*.gitignore":true,
+        "**/*.expo":true,
+        "**/package*.json":true,
+        "**/babel*.js":true,
+        "**/app*.json":true,
+        "**/node_modules":true,
+    }
+}

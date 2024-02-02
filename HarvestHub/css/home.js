@@ -54,23 +54,6 @@ const styles = StyleSheet.create({
     signUpButton: {
       marginRight: 0,
     },
-
-    curveContainer: {
-      position: 'absolute',
-      bottom: 0,
-      width: '100%',
-      height: 20,
-      backgroundColor: 'white',
-      overflow: 'hidden',
-    },
-  
-    curve: {
-      width: '100%',
-      height: 30,
-      backgroundColor: 'green',
-      borderTopLeftRadius: 30,
-      borderTopRightRadius: 30,
-    },
 });
 
 export default styles;

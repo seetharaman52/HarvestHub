@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import { Text, Image, View, TouchableOpacity } from 'react-native';
 import styles from './css/home'
 
@@ -18,7 +17,6 @@ const HomeScreen = () => {
     <View 
       style={styles.container}
     >
-        <StatusBar style='auto'/>
         <Image 
           style={styles.logo}
             source={require('./assets/HarvestHubLogo.png')}
