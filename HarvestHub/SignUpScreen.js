@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
 import styleSignUp from './css/signup'
 
-const handleSignIn = () => {
-  alert("You clicked Sign In!");
-}
-
-const SignUpScreen = () => {
+const SignUpScreen = ({ navigation }) => {
+  const handleSignIn = () => {
+    navigation.navigate('SignIn');
+  }
   const [fullname, setFullname] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [email, setEmail] = useState('');

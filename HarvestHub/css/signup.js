@@ -9,7 +9,7 @@ const styleSignUp = StyleSheet.create({
 
       bg: {
         width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height,
+        height: Dimensions.get('window').height + Dimensions.get('window').height / 10,
         position: "absolute",
         top: 0,
         left: 0,

@@ -8,8 +8,8 @@ const styleSignIn = StyleSheet.create({
       },
 
       bg: {
-        width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height,
+        width: Dimensions.get('window').width + 10,
+        height: Dimensions.get('window').height + Dimensions.get('window').height / 10,
         position: "absolute",
         top: 0,
         left: 0,
@@ -19,12 +19,12 @@ const styleSignIn = StyleSheet.create({
       },
       
       logoContainer: {
-        alignSelf: 'flex-end', // Align to the right
+        alignSelf: 'flex-end',
       },
 
       logo: {
         width: 170,
-        height: 100,
+        height: 170,
         resizeMode: 'contain',
       },
       
@@ -39,7 +39,7 @@ const styleSignIn = StyleSheet.create({
         fontSize: 24,
         fontWeight: 'bold',
         marginBottom: 0,
-        marginTop: 10,
+        marginTop: 50,
         color: 'white',
       },
 

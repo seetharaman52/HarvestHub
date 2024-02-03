@@ -1,16 +1,15 @@
+import React from 'react';
 import { Text, Image, View, TouchableOpacity } from 'react-native';
 import styles from './css/home'
 
-const CurvedBottom = () => (
-  <View style={styles.curveContainer}>
-    <View style={styles.curve}></View>
-  </View>
-);
+const HomeScreen = ({ navigation }) => {
 
-const HomeScreen = () => {
+  const handleSignInPress = () => {
+    navigation.navigate('SignIn');
+  };
 
-  const handleButtonPress = () => {
-      console.log('SignUp');
+  const handleSignUpPress = () => {
+    navigation.navigate('SignUp');
   };
 
   return (
@@ -18,15 +17,19 @@ const HomeScreen = () => {
       style={styles.container}
     >
         <Image 
+          style={styles.bg}
+            source={require('./assets/green.jpg')}
+        />
+        <Image 
           style={styles.logo}
             source={require('./assets/HarvestHubLogo.png')}
         />
       <Text 
         style={styles.textHome}>
-          Welcome to Harvest Hub!
+          Welcome to Harvest Hub
       </Text>
       <Text 
-        style={styles.phraseHome}>
+        style={styles.centerTxt} >
           Your Agritech companion! Cultivate success with Data-driven insights and optimal farming recommendations for bountiful yields
       </Text>
       <View 
@@ -34,7 +37,7 @@ const HomeScreen = () => {
       >
         <TouchableOpacity 
           style={[styles.signInUpButton, styles.signInButton]} 
-          onPress={handleButtonPress}
+          onPress={handleSignInPress}
         >
           <Text 
             style={styles.signInUp}>
@@ -43,7 +46,7 @@ const HomeScreen = () => {
         </TouchableOpacity>
         <TouchableOpacity 
           style={styles.signInUpButton} 
-          onPress={handleButtonPress}
+          onPress={handleSignUpPress}
         >
           <Text 
             style={[styles.signInUp, styles.signUpButton]}>
@@ -51,7 +54,6 @@ const HomeScreen = () => {
           </Text>
         </TouchableOpacity>
       </View>
-      <CurvedBottom />
     </View>
   );
 };
