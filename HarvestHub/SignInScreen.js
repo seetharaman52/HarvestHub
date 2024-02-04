@@ -2,30 +2,42 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
 import styleSignIn from './css/signin'
 
-const handleSignIn = () => {
-  alert("You clicked Sign In!");
-}
-
-const SignInScreen = () => {
-  const [username, setFullname] = useState('');
+const SignInScreen = ({ navigation }) => {
+  const [phoneNumber, setphoneNumber] = useState('');
   const [password, setPassword] = useState('');
-
-  const userNameisValid = () => username.trim() !== ''; // DB
-  const PasswordisValid = () => password.length >= 6; // DB
-
-  const handleSignIn = () => {
-    if (!userNameisValid()) {
-      alert('Please enter a valid username.'); // DB
-      return;
+  
+  const handleSignIn = async () => {
+    try {
+      console.log(phoneNumber);
+      console.log(password);
+      const response = await fetch(`http://192.168.99.243:4548/checkPassword/${phoneNumber}/${password}`);
+      if (!response.ok) {
+        console.log("Inside if not response is Ok");
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const data = await response.json();
+      if (data.exists) {
+        const passwordResponse = await fetch(`http://192.168.99.243:4548/checkPassword/${phoneNumber}/${password}`);
+        const passwordData = await passwordResponse.json();
+        console.log("Inside 1st if")
+        console.log(passwordData);
+        if (passwordData.exists) {
+          console.log("Inside 2nd if")
+          navigation.navigate('TheHub');
+        } else {
+          console.log("Inside 1st Else");
+          alert('Incorrect password. Please try again.');
+        }
+      } else {
+        console.log("Inside 2nd else");
+        alert('No account found with this phone number.');
+      }
+    } catch (error) {
+      console.log("Inside Catch block");
+      console.error('Error during sign-in:', error);
+      alert('Error during sign-in. Please try again.');
     }
-
-    if (!PasswordisValid()) {
-      alert('Password must be at least 6 characters long.'); //DB
-      return;
-    }
-    alert('Sign In successful!');
   };
-
   return (
     <View 
       style={styleSignIn.container}
@@ -48,9 +60,10 @@ const SignInScreen = () => {
       </View>
       <TextInput
         style={styleSignIn.input}
-        placeholder="Username"
-        value={username}
-        onChangeText={(text) => setFullname(text)}
+        placeholder="Phone Number"
+        value={phoneNumber}
+        onChangeText={(text) => setphoneNumber(text)}
+        keyboardType="numeric"
       />
       <TextInput
         style={styleSignIn.input}

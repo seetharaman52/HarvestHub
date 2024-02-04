@@ -11,19 +11,19 @@ const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <>
-      <TheHub></TheHub>
-    </>
-    // <NavigationContainer>
-    //   <Stack.Navigator
-    //     initialRouteName="Home"
-    //     screenOptions={{ headerShown: false }}
-    //   >
-    //     <Stack.Screen name="Home" component={HomeScreen} />
-    //     <Stack.Screen name="SignIn" component={SignInScreen} />
-    //     <Stack.Screen name="SignUp" component={SignUpScreen} />
-    //     <Stack.Screen name="TheHub" component={TheHub} />
-    //   </Stack.Navigator>
-    // </NavigationContainer>
+    // <>
+    //   <TheHub></TheHub>
+    // </>
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={{ headerShown: false }}
+      >
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="SignIn" component={SignInScreen} />
+        <Stack.Screen name="SignUp" component={SignUpScreen} />
+        <Stack.Screen name="TheHub" component={TheHub} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
