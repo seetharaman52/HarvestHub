@@ -45,7 +45,7 @@ const HomeScreen = ({ navigation }) => {
           </Text>
         </TouchableOpacity>
         <TouchableOpacity 
-          style={styles.signInUpButton} 
+          style={styles.signInUpButton}
           onPress={handleSignUpPress}
         >
           <Text 

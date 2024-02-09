@@ -17,3 +17,11 @@ export const validateSignUp = (username, phoneNumber, email, password) => {
     return null;
   };
   
+  export const validateSignIn = (phoneNumber, password) => {
+    if (!phoneNumber.trim()){
+      return "Please enter a Phone number!";
+    }
+    if (!password){
+      return "Please enter the Password!";
+    }
+  }

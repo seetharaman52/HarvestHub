@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { StatusBar } from 'react-native';
+import { StatusBar, Platform } from 'react-native';
 const HubStyles = StyleSheet.create({
     // Part 1
     container: {
@@ -21,6 +21,7 @@ const HubStyles = StyleSheet.create({
     logoContainer: {
         marginRight: 20,
         marginLeft: 20,
+        backgroundColor: 'green',
     },
     headerTextContainer:{
         flex: 1,
@@ -121,10 +122,32 @@ const HubStyles = StyleSheet.create({
         tintColor: 'white',
     },
     
-      menuText: {
+    menuText: {
         color: 'white',
         fontSize: 14,
         marginLeft: 5,
+    },
+
+    sidelogo: {
+        width: 150,
+        height: 150,
+        marginTop: 220,
+    },
+    sideMenuContainer: {
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        height: '100%',
+        width: 220,
+        backgroundColor: 'rgba(224, 232, 217, 0.97)',
+        padding: 30,
+        paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+    },
+
+    sideMenuItem: {
+        color: 'black',
+        fontSize: 19,
+        marginBottom: 20,
     },
 });
 

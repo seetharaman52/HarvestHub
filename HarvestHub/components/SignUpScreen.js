@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
-import styleSignUp from './css/signup'
-import { validateSignUp } from './scripts/validation'
+import styleSignUp from '../css/signup'
+import { validateSignUp } from '../scripts/validation'
 
 const SignUpScreen = ({ navigation }) => {
   const handleSignIn = () => {
@@ -15,14 +15,25 @@ const SignUpScreen = ({ navigation }) => {
       return;
     }
     try {
-      const response = await fetch(`http://192.168.99.243:4548/checkPhoneNumber/${phoneNumber}`);
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      const data = await response.json();
-      if (data.exists) {
+      const phoneResponse = await fetch(`http://192.168.104.243:4548/checkPhoneNumber/${phoneNumber}`);
+      const mailResponse = await fetch(`http://192.168.104.243:4548/email/${email}`);
+      const usernameResponse = await fetch(`http://192.168.104.243:4548/username/${username}`);
+      const phone = await phoneResponse.json();
+      const mail = await mailResponse.json();
+      const user = await usernameResponse.json();
+      // if (!response.ok) {
+      //   throw new Error(`HTTP error! Status: ${response.status}`);
+      // }
+      if (phone.exists) {
         alert('Phone number already exists. Please use a different one.');
-      } else {
+      } 
+      if (mail.exists){
+        alert('Entered Email already exixts!');
+      }
+      if (user.exists){
+        alert('Username already exists! Please try different username!');
+      }
+      else {
         const signupResponse = await fetch('http://192.168.99.243:4548/signup', {
                 method: 'POST',
                 headers: {
@@ -30,13 +41,11 @@ const SignUpScreen = ({ navigation }) => {
                 },
                 body: JSON.stringify({ username, phoneNumber, email, password }),
             });
-            console.log("POST RESPONSE: ", JSON.stringify(signupResponse));
             if (!signupResponse.ok) {
                 throw new Error(`HTTP error! Status: ${signupResponse.status}`);
             }
 
             const signupData = await signupResponse.json();
-            console.log("POST RESPONSE: ", JSON.stringify(signupData));
 
             if (signupData.success) {
                 alert('Signup successful!');
@@ -63,7 +72,7 @@ const SignUpScreen = ({ navigation }) => {
     >
       <Image 
         style={styleSignUp.bg}
-          source={require('./assets/SignUpBG.png')}
+          source={require('../assets/SignUpBG.png')}
       />
       
       <View style={styleSignUp.headingContainer}>

@@ -69,6 +69,15 @@ const styleSignIn = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 14,
       },
+
+      eyeButton: {
+        position: 'absolute',
+        right: 10,
+        top: 21,
+      },
+      inputContainer: {
+        position: 'relative',
+      },
 })
 
 export default styleSignIn;
