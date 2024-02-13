@@ -1,4 +1,5 @@
 import React from 'react';
+import { StatusBar } from 'expo-status-bar';
 import { Text, Image, View, TouchableOpacity } from 'react-native';
 import styles from './css/home'
 
@@ -16,6 +17,10 @@ const HomeScreen = ({ navigation }) => {
     <View 
       style={styles.container}
     >
+        <StatusBar
+          barStyle="light-content"
+          hidden={false}
+        />
         <Image 
           style={styles.bg}
             source={require('./assets/green.jpg')}

@@ -30,7 +30,7 @@ const HubStyles = StyleSheet.create({
     },
     headerText: {
         color: 'white',
-        fontSize: 32,
+        fontSize: 26,
         fontWeight: 'bold',
         textAlign: 'center',
         textDecorationLine: 'underline',
@@ -70,7 +70,7 @@ const HubStyles = StyleSheet.create({
     },
     iconText: {
         color: 'black',
-        fontSize: 12.5,
+        fontSize: 11.5,
         textAlign: 'center',
         marginTop: 10,
         fontWeight: 'bold',

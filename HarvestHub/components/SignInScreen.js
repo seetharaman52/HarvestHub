@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import styleSignIn from '../css/signin'
 import loading from '../css/black'
@@ -47,7 +48,7 @@ const SignInScreen = ({ navigation }) => {
     try {
       //console.log(phoneNumber);
       //console.log(password);
-      const response = await fetch(`http://192.168.104.243:4548/checkPhoneNumber/${phoneNumber}`);
+      const response = await fetch(`http://192.168.209.243:4548/checkPhoneNumber/${phoneNumber}`);
       //console.log(response);
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
@@ -55,7 +56,7 @@ const SignInScreen = ({ navigation }) => {
       const data = await response.json();
       //console.log(data);
       if (data.exists) {
-        const passwordResponse = await fetch(`http://192.168.104.243:4548/checkPassword/${phoneNumber}/${password}`);
+        const passwordResponse = await fetch(`http://192.168.209.243:4548/checkPassword/${phoneNumber}/${password}`);
         const passwordData = await passwordResponse.json();
         if (passwordData.exists) {
           await AsyncStorage.setItem('userToken', 'TestmyToken');
@@ -75,6 +76,10 @@ const SignInScreen = ({ navigation }) => {
     <View 
       style={styleSignIn.container}
     >
+      <StatusBar
+          barStyle="light-content"
+          hidden={false}
+      />
       <Image 
         style={styleSignIn.bg}
           source={require('../assets/SignUpBG.png')}

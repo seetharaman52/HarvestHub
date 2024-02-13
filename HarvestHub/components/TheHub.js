@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { StatusBar } from 'expo-status-bar';
 import { View, Text, Image, TouchableOpacity, Animated, Easing, Platform } from 'react-native';
 import HubStyles from '../css/hub';
 import { useRef } from 'react';
@@ -14,7 +15,7 @@ const TheHub = ({ navigation }) => {
     
     const handleIconClick = (def="") => {
         if (def == "YieldView"){
-            alert("Yield View");
+            navigation.navigate("YieldView");
         }
         else if (def == 'FertileFeed'){
             alert("Fertile Feed");
@@ -23,7 +24,7 @@ const TheHub = ({ navigation }) => {
             alert("Pest Shield");
         }
         else if (def == "GrowWise"){
-            alert("Grow Wise");
+            navigation.navigate("GrowWise");
         }
         else if (def == "newFeature"){
             alert("Feature growing soon..!");
@@ -34,11 +35,17 @@ const TheHub = ({ navigation }) => {
         if (def == "AboutUs"){
             navigation.navigate("AboutUs");
         }
-        if (def == "services"){
+        else if (def == "services"){
             navigation.navigate("Services");
         }
-        if (def == "contact"){
+        else if (def == "contact"){
             navigation.navigate("Contact");
+        }
+        else if (def == "profilePage"){
+            navigation.navigate("Profile");
+        }
+        else if (def == "News"){
+            navigation.navigate("News");
         }
     }
 
@@ -67,7 +74,7 @@ const TheHub = ({ navigation }) => {
       await AsyncStorage.removeItem('userToken');
       navigation.reset({
         index: 0,
-        routes: [{ name: 'SignIn' }],
+        routes: [{ name: 'Home' }],
       });
     };
 
@@ -101,6 +108,10 @@ const TheHub = ({ navigation }) => {
     return (
         // First Part
         <View style={HubStyles.container}> 
+            <StatusBar
+                barStyle="light-content"
+                hidden={false}
+            />
             <View style={HubStyles.firstContainer}>
                 <View style={HubStyles.logoContainer}>
                     <Image
@@ -221,14 +232,14 @@ const TheHub = ({ navigation }) => {
                     />
                 </TouchableOpacity>
 
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => handleSideMenu("profilePage")}>
                     <Image
                         style={HubStyles.menuIcon}
                         source={require('../assets/user.png')}
                     />
                 </TouchableOpacity>
                 
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => handleSideMenu("News")}>
                     <Image
                         style={HubStyles.menuIcon}
                         source={require('../assets/newspaper.png')}

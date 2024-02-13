@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image } from 'react-native';
 import styleSignUp from '../css/signup'
+import { StatusBar } from 'expo-status-bar';
 import { validateSignUp } from '../scripts/validation'
 
 const SignUpScreen = ({ navigation }) => {
@@ -15,26 +16,26 @@ const SignUpScreen = ({ navigation }) => {
       return;
     }
     try {
-      const phoneResponse = await fetch(`http://192.168.104.243:4548/checkPhoneNumber/${phoneNumber}`);
-      const mailResponse = await fetch(`http://192.168.104.243:4548/email/${email}`);
-      const usernameResponse = await fetch(`http://192.168.104.243:4548/username/${username}`);
+      const phoneResponse = await fetch(`http://192.168.146.243:4548/checkPhoneNumber/${phoneNumber}`);
+      const mailResponse = await fetch(`http://192.168.146.243:4548/email/${email}`);
+      const usernameResponse = await fetch(`http://192.168.146.243:4548/username/${username}`);
       const phone = await phoneResponse.json();
       const mail = await mailResponse.json();
       const user = await usernameResponse.json();
-      // if (!response.ok) {
-      //   throw new Error(`HTTP error! Status: ${response.status}`);
-      // }
+      console.log(phone);
+      console.log(mail);
+      console.log(user);
       if (phone.exists) {
         alert('Phone number already exists. Please use a different one.');
       } 
-      if (mail.exists){
+      else if (mail.exists){
         alert('Entered Email already exixts!');
       }
-      if (user.exists){
+      else if (user.exists){
         alert('Username already exists! Please try different username!');
       }
       else {
-        const signupResponse = await fetch('http://192.168.99.243:4548/signup', {
+        const signupResponse = await fetch('http://192.168.146.243:4548/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -70,6 +71,10 @@ const SignUpScreen = ({ navigation }) => {
     <View 
       style={styleSignUp.container}
     >
+      <StatusBar
+        barStyle="light-content"
+        hidden={false}
+      />
       <Image 
         style={styleSignUp.bg}
           source={require('../assets/SignUpBG.png')}

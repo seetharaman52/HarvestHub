@@ -5,10 +5,11 @@ const profileStyles = StyleSheet.create({
         paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
         flex: 1,
         backgroundColor: 'green',
+        alignItems: 'center',
     },
     headingContainer: {
-        alignSelf: 'flex-start',
-        paddingLeft: 30,
+        justifyContent: 'center',
+        alignSelf: 'center',
     },
     headingText: {
         color: 'white',
@@ -16,11 +17,31 @@ const profileStyles = StyleSheet.create({
         fontWeight: 'bold',
         textDecorationLine: 'underline',
     },
-    image: {
+    profileInfo: {
+        marginBottom: 20,
+    },
+    name: {
+        fontSize: 24,
+        fontWeight: "bold",
+        marginBottom: 5,
+    },
+    username: {
+        fontSize: 18,
+        color: "gray",
+        marginBottom: 10,
+    },
+    info: {
+        fontSize: 16,
+        marginBottom: 5,
+    },
+    supportUs: {
+        fontSize: 20,
+        color: "blue",
+        textDecorationLine: "underline",
+    },
+    imageTele: {
         width: 100,
         height: 100,
-        borderRadius: 50,
-        marginRight: 20,
     },
 });
 
