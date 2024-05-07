@@ -1,2 +1,0 @@
-### HarvestHub
-### In development!

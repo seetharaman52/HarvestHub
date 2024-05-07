@@ -1,0 +1,16 @@
+sudo npm install -g yarn
+sudo npm install -g react-native-cli
+sudo npm install -g react-native
+sudo npm install -g expo-cli
+npm install
+npm install @react-navigation/stack
+npm install @react-navigation/native
+npm install @react-native-async-storage/async-storage
+npm install mysql2
+npm install axios express body-parser nodemon cors utils
+npm install @react-native-async-storage/async-storage
+npm install @react-navigation/drawer
+npm install mysql
+npm install react-native-gesture-handler
+npm install react-native-modal
+npm install react-native-reanimated react-native-safe-area-context react-native-safe-area-context
